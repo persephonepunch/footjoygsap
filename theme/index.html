@@ -28,51 +28,10 @@
         }</style></head>
 <body class="body">
   <div class="page-wrapper">
-    <div class="global-styles">
-      <div class="html w-embed">
-        <style>
-/* ALL PAGES CSS */
-/* Desktop Only CSS (i.e. hover states) */
-@media only screen and (min-width: 992px) {
-}
-/* Main Variables */
-:root {
-  --main-dark: black;
-  --main-light: white;
-}
-/* Global Styles */
-::selection {
-	background: var(--main-dark);
-  color: var(--main-light);
-  text-shadow: none;
-}
-img::selection, svg::selection {
-	background: transparent;
-}
-/* Link color inherits from parent font color  */
-a {
-	color: inherit;
-}
-/* Disable / enable clicking on an element and its children  */
-.no-click {
-	pointer-events: none;
-}
-.can-click {
-	pointer-events: auto;
-}
-/* Target any element with a certain "word" in the class name  */
-[class*="spacer"] {
-}
-/* Project Styles */
-.work_img-flex {
-	pointer-events: none;
-}
-</style>
-      </div>
-    </div>
+    {%- include "partials/global-styles" -%}
     <div class="horizontal wf-section">
       <div class="logoleft">
-        <div class="logoblockcontainer"><img src="{{ images.583f52a0.url }}" loading="lazy" width="422" height="556" alt="{{ images.583f52a0.alt | trim | escape }}" class="image cta"></div>
+        <div class="logoblockcontainer"><img src="{{ images.583f52a0.url }}" loading="lazy" width="422" height="556" data-sizes="[{&quot;max&quot;:10000,&quot;size&quot;:&quot;100px&quot;}]" alt="{{ images.583f52a0.alt | trim | escape }}" class="image cta"></div>
         <div class="ctawrapper">
           <h1 class="headingsmall">{{ texts.-6917cba7 }}</h1>
           <h1 class="headingsmall">{{ texts.29b16a1d }}</h1>
@@ -82,24 +41,24 @@ a {
       <main class="main-wrapper">
         <section class="section">
           <div class="container">
-            <div class="w-dyn-list">
-              <div role="list" class="w-dyn-items">
-                <div role="listitem" class="work_item w-dyn-item">
-                  <p class="work_number"></p>
+            {%- assign collection = collections.work | sort: "f_number" -%}<div class="w-dyn-list">
+              {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
+                {%- for item in collection -%}<div role="listitem" class="work_item w-dyn-item">
+                  <p class="work_number">{{ item.data.f_number }}</p>
                   <a href="{{ links.23 }}" class="work_link w-inline-block">
-                    <p class="work_title is-1"></p>
-                    <p class="work_title is-2"></p>
+                    <p class="work_title is-1">{{ item.data.title }}</p>
+                    <p class="work_title is-2">{{ item.data.title }}</p>
                     <div class="work_img-flex">
                       <div class="work_img">
-                        <div class="work_img-height"><img src="{{ images.0.url }}" loading="eager" alt="{{ images.0.alt | trim | escape }}" class="work_photo"></div>
+                        <div class="work_img-height"><img src="{{ item.data.f_image.url }}" loading="eager" alt="{{ item.data.title }}" class="work_photo"></div>
                       </div>
                     </div>
                   </a>
-                </div>
-              </div>
-              <div class="w-dyn-empty">
+                </div>{%- endfor -%}
+              </div>{%- endunless -%}
+              {%- if collection.length == 0 -%}<div class="w-dyn-empty">
                 <div>{{ texts.3d503d2b }}</div>
-              </div>
+              </div>{%- endif -%}
             </div>
           </div>
         </section>

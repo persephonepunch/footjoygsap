@@ -280,17 +280,4 @@ collections:
                 label: Image Alt
                 widget: string
                 required: false
-          - label: Image
-            name: '0'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
 publish_mode: editorial_workflow
