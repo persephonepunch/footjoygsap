@@ -2,4 +2,4 @@
 Footjoy GSAP sample
 
 
-#[https://miro.com/app/board/uXjVOsdNhHM=/]
+[https://miro.com/app/board/uXjVOsdNhHM=/]
