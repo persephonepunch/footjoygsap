@@ -272,15 +272,24 @@ blockquote {
 }
 
 .image.cta {
+  max-width: 90%;
   margin-right: auto;
   margin-bottom: 0px;
   margin-left: auto;
 }
 
 .logoblockcontainer {
-  width: 100px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30%;
   height: auto;
   margin-bottom: 38px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .headingsmall {
@@ -320,6 +329,12 @@ blockquote {
 
   .work_img-flex {
     display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logoblockcontainer {
+    width: 60%;
   }
 }
 
